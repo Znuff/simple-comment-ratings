@@ -1,0 +1,189 @@
+/**
+ * Simple Comment Ratings — front-end styles.
+ *
+ * The vote container is absolutely positioned inside the comment body.
+ * We add `position: relative` to the most common theme wrappers here.
+ * Themes that use non-standard selectors can override via:
+ *   .my-comment-wrapper { position: relative; }
+ */
+
+/* ─── Comment wrapper — give absolute positioning a reference point ─────── */
+
+.comment-body,
+.comment-content,
+.wp-block-comment-template li {
+	position: relative;
+}
+
+/*
+ * Reserve vertical space so the vote bar never overlaps comment text.
+ * Themes may need to adjust or override this value.
+ */
+.comment-content {
+	padding-bottom: 2.25rem;
+}
+
+/* ─── Vote container ────────────────────────────────────────────────────── */
+
+.scr-vote-container {
+	position: absolute;
+	display:  flex;
+	align-items: center;
+	font-size: 0;   /* collapse whitespace between inline-flex children */
+	line-height: 1;
+}
+
+/* Position variants */
+.scr-pos-bottom-right { bottom: 4px; right:  4px; }
+.scr-pos-bottom-left  { bottom: 4px; left:   4px; }
+.scr-pos-top-right    { top:    4px; right:  4px; }
+.scr-pos-top-left     { top:    4px; left:   4px; }
+
+/* ─── Wrapper ────────────────────────────────────────────────────────────── */
+
+.scr-votes-wrapper {
+	display:     flex;
+	align-items: center;
+	gap:         4px;
+}
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+
+.scr-vote-btn {
+	display:         inline-flex;
+	align-items:     center;
+	gap:             4px;
+	background:      transparent;
+	border:          none;
+	padding:         2px 4px;
+	cursor:          pointer;
+	font-size:       1rem;
+	line-height:     1.4;
+	text-decoration: none;
+	transition:      color 0.12s ease, opacity 0.12s ease;
+	user-select:     none;
+}
+
+/* Icon element — needs display:inline-block for transforms */
+.scr-vote-btn i {
+	display:    inline-block;
+	transition: transform 0.18s ease;
+}
+
+.scr-vote-up   { color: #4caf50; }
+.scr-vote-down { color: #f44336; }
+
+/* Reset any theme-injected button hover decoration */
+.scr-vote-btn:hover,
+.scr-vote-btn:active {
+	background:    transparent !important;
+	border:        none        !important;
+	box-shadow:    none        !important;
+	border-radius: 0;
+}
+
+.scr-vote-btn:hover:not(:disabled) {
+	filter: brightness( 0.8 );
+}
+
+/* Hover — icon loops in the vote direction while cursor is over the button */
+.scr-vote-up:hover:not(:disabled)   i { animation: scr-hover-float-up   0.8s ease-in-out infinite; }
+.scr-vote-down:hover:not(:disabled) i { animation: scr-hover-float-down 0.8s ease-in-out infinite; }
+
+.scr-vote-btn:focus-visible {
+	outline:        2px solid currentColor;
+	outline-offset: 2px;
+	border-radius:  2px;
+}
+
+.scr-vote-btn:disabled {
+	cursor:  default;
+	opacity: 0.45;
+}
+
+/* ─── Active / voted state ───────────────────────────────────────────────── */
+
+.scr-vote-btn.scr-active {
+	filter: none;
+}
+
+.scr-vote-btn.scr-active:disabled {
+	opacity: 1; /* keep voted thumb fully visible */
+}
+
+/* ─── Count labels ───────────────────────────────────────────────────────── */
+
+.scr-count-up,
+.scr-count-down,
+.scr-count-sum {
+	font-size:   1rem;
+	font-weight: 600;
+	min-width:   1ch;
+	display:     inline-block;
+	text-align:  center;
+}
+
+/* Net score between buttons (sum style) */
+.scr-count-sum {
+	padding: 0 2px;
+	color:   #444;
+}
+
+/* ─── AJAX loading placeholder ───────────────────────────────────────────── */
+
+.scr-ajax-counts .scr-count-up,
+.scr-ajax-counts .scr-count-down,
+.scr-ajax-counts .scr-count-sum {
+	min-width: 1.5ch;
+}
+
+/* Subtle pulse while waiting for AJAX counts */
+@keyframes scr-pulse {
+	0%,100% { opacity: 0.4; }
+	50%      { opacity: 1;   }
+}
+
+.scr-ajax-counts .scr-vote-btn:not([disabled]) {
+	animation: scr-pulse 1.2s ease-in-out infinite;
+}
+
+/* Stop pulsing once the user has voted (class added by JS) */
+.scr-voted-up   .scr-vote-btn,
+.scr-voted-down .scr-vote-btn {
+	animation: none;
+}
+
+/* ─── Hover float animation (loops while cursor is over button) ──────────── */
+
+@keyframes scr-hover-float-up {
+	0%, 100% { transform: translateY(  0   ); }
+	50%      { transform: translateY( -4px ); }
+}
+
+@keyframes scr-hover-float-down {
+	0%, 100% { transform: translateY( 0   ); }
+	50%      { transform: translateY( 4px ); }
+}
+
+/* ─── Click pop animation ────────────────────────────────────────────────── */
+
+@keyframes scr-pop-up {
+	0%   { transform: scale( 1 )   translateY(    0 ); }
+	35%  { transform: scale( 1.6 ) translateY( -10px ); }
+	65%  { transform: scale( 1.2 ) translateY(  -4px ); }
+	100% { transform: scale( 1 )   translateY(    0 ); }
+}
+
+@keyframes scr-pop-down {
+	0%   { transform: scale( 1 )   translateY(   0 ); }
+	35%  { transform: scale( 1.6 ) translateY( 10px ); }
+	65%  { transform: scale( 1.2 ) translateY(  4px ); }
+	100% { transform: scale( 1 )   translateY(   0 ); }
+}
+
+.scr-vote-up.scr-anim-pop   i { animation: scr-pop-up   0.42s cubic-bezier( 0.36, 0.07, 0.19, 0.97 ) both; }
+.scr-vote-down.scr-anim-pop i { animation: scr-pop-down 0.42s cubic-bezier( 0.36, 0.07, 0.19, 0.97 ) both; }
+
+/* Never conflict with the AJAX loading pulse */
+.scr-anim-pop { animation: none !important; }
+
