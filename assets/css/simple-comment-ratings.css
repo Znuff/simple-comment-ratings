@@ -62,7 +62,7 @@
 	text-decoration: none;
 	transition:      color 0.12s ease, opacity 0.12s ease;
 	user-select:     none;
-	text-shadow:     3px 3px 4px black;
+	text-shadow:     2px 2px 3px black;
 }
 
 /* Icon element — needs display:inline-block for transforms */
@@ -71,8 +71,8 @@
 	transition: transform 0.18s ease;
 }
 
-.scr-vote-up   { color: #4caf50; }
-.scr-vote-down { color: #f44336; }
+.scr-vote-up, .scr-vote-up:hover   { color: #4caf50; }
+.scr-vote-down, .scr-vote-down:hover { color: #f44336; }
 
 /* Reset any theme-injected button hover decoration */
 .scr-vote-btn:hover,
