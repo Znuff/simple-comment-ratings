@@ -2,8 +2,8 @@
 /**
  * Plugin Name: Simple Comment Ratings
  * Description: Allow visitors to rate comments with thumbs up/down. Includes Cloudflare Turnstile bot protection.
- * Version:     1.0.0
- * Author:      Your Name
+ * Version:     1.0.1
+ * Author:      Znuff
  * License:     GPL-2.0-or-later
  * Text Domain: simple-comment-ratings
  * Domain Path: /languages
