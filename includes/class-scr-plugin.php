@@ -133,6 +133,10 @@ class SCR_Plugin {
 			return $text;
 		}
 
+		if ( $this->is_comment_past_cutoff( $comment ) ) {
+			return $text;
+		}
+
 		return $text . $this->renderer->render( $comment_id, $post_id );
 	}
 
@@ -165,6 +169,18 @@ class SCR_Plugin {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Returns true if the comment is older than the configured cutoff.
+	 * Always returns false when vote_cutoff_days is 0 (feature disabled).
+	 */
+	private function is_comment_past_cutoff( WP_Comment $comment ): bool {
+		$days = (int) $this->settings->get( 'vote_cutoff_days' );
+		if ( $days <= 0 ) {
+			return false;
+		}
+		return strtotime( $comment->comment_date_gmt ) < ( time() - $days * DAY_IN_SECONDS );
 	}
 
 	// ---------------------------------------------------------------------------

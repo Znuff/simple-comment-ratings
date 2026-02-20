@@ -54,6 +54,12 @@ class SCR_Ajax {
 			wp_send_json_error( $this->err( 'invalid_comment', __( 'Invalid comment.', 'simple-comment-ratings' ) ), 400 );
 		}
 
+		// Cutoff check.
+		$cutoff_days = (int) $this->settings->get( 'vote_cutoff_days' );
+		if ( $cutoff_days > 0 && strtotime( $comment->comment_date_gmt ) < ( time() - $cutoff_days * DAY_IN_SECONDS ) ) {
+			wp_send_json_error( $this->err( 'voting_closed', __( 'Voting is closed for this comment.', 'simple-comment-ratings' ) ), 403 );
+		}
+
 		// Validate vote direction.
 		$vote_input = sanitize_text_field( wp_unslash( $_POST['vote'] ?? '' ) );
 		if ( ! in_array( $vote_input, [ 'up', 'down' ], true ) ) {

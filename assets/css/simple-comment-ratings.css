@@ -34,10 +34,10 @@
 }
 
 /* Position variants */
-.scr-pos-bottom-right { bottom: 4px; right:  4px; }
-.scr-pos-bottom-left  { bottom: 4px; left:   4px; }
-.scr-pos-top-right    { top:    4px; right:  4px; }
-.scr-pos-top-left     { top:    4px; left:   4px; }
+.scr-pos-bottom-right { bottom: 0.4rem; right: 1.2rem; }
+.scr-pos-bottom-left  { bottom: 0.4rem; left:  1.2rem; }
+.scr-pos-top-right    { top:    0.4rem; right: 1.2rem; }
+.scr-pos-top-left     { top:    0.4rem; left:  1.2rem; }
 
 /* ─── Wrapper ────────────────────────────────────────────────────────────── */
 
@@ -84,6 +84,7 @@
 
 .scr-vote-btn:hover:not(:disabled) {
 	filter: brightness( 0.8 );
+	cursor: pointer;
 }
 
 /* Hover — icon loops in the vote direction while cursor is over the button */

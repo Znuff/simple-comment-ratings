@@ -28,6 +28,7 @@ class SCR_Settings {
 		'load_font_awesome'   => true,
 		'excluded_emails'     => '',
 		'excluded_roles'      => [],
+		'vote_cutoff_days'    => 30,
 	];
 
 	private function __construct() {
@@ -215,6 +216,19 @@ class SCR_Settings {
 				'description' => __( 'Hide vote buttons on comments posted by users with these roles. Does not affect guest comments.', 'simple-comment-ratings' ),
 			]
 		);
+
+		add_settings_field(
+			'vote_cutoff_days',
+			__( 'Vote Cutoff (days)', 'simple-comment-ratings' ),
+			[ $this, 'field_number' ],
+			self::OPTION_PAGE,
+			'scr_exclusions',
+			[
+				'key'         => 'vote_cutoff_days',
+				'min'         => 0,
+				'description' => __( 'Hide vote buttons on comments older than this many days. Set to 0 to always allow voting.', 'simple-comment-ratings' ),
+			]
+		);
 	}
 
 	// ---------------------------------------------------------------------------
@@ -263,6 +277,25 @@ class SCR_Settings {
 			esc_attr( self::OPTIONS_KEY ),
 			esc_attr( $key ),
 			$value
+		);
+
+		if ( $description ) {
+			printf( '<p class="description">%s</p>', esc_html( $description ) );
+		}
+	}
+
+	public function field_number( array $args ): void {
+		$key         = $args['key'];
+		$value       = (int) ( $this->options[ $key ] ?? 0 );
+		$min         = isset( $args['min'] ) ? (int) $args['min'] : 0;
+		$description = $args['description'] ?? '';
+
+		printf(
+			'<input type="number" name="%s[%s]" value="%d" min="%d" class="small-text">',
+			esc_attr( self::OPTIONS_KEY ),
+			esc_attr( $key ),
+			$value,
+			$min
 		);
 
 		if ( $description ) {
@@ -348,6 +381,8 @@ class SCR_Settings {
 		$clean['load_font_awesome'] = ! empty( $input['load_font_awesome'] );
 
 		$clean['excluded_emails'] = sanitize_textarea_field( $input['excluded_emails'] ?? '' );
+
+		$clean['vote_cutoff_days'] = absint( $input['vote_cutoff_days'] ?? 30 );
 
 		$allowed_roles           = array_keys( wp_roles()->roles );
 		$submitted_roles         = (array) ( $input['excluded_roles'] ?? [] );
