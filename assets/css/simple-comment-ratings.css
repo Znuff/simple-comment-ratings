@@ -65,7 +65,7 @@
 	text-shadow:     2px 2px 3px black;
 }
 
-/* Icon element — needs display:inline-block for transforms */
+/* Icon element - needs display:inline-block for transforms */
 .scr-vote-btn i {
 	display:    inline-block;
 	transition: transform 0.18s ease;
@@ -88,7 +88,7 @@
 	cursor: pointer;
 }
 
-/* Hover — icon loops in the vote direction while cursor is over the button */
+/* Hover - icon loops in the vote direction while cursor is over the button */
 .scr-vote-up:hover:not(:disabled)   i { animation: scr-hover-float-up   0.8s ease-in-out infinite; }
 .scr-vote-down:hover:not(:disabled) i { animation: scr-hover-float-down 0.8s ease-in-out infinite; }
 
