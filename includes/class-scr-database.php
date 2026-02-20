@@ -48,8 +48,6 @@ class SCR_Database {
 
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 		dbDelta( $sql );
-
-		update_option( 'scr_db_version', SCR_VERSION );
 	}
 
 	// ---------------------------------------------------------------------------

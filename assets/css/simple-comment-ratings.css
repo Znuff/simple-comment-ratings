@@ -7,7 +7,7 @@
  *   .my-comment-wrapper { position: relative; }
  */
 
-/* ─── Comment wrapper — give absolute positioning a reference point ─────── */
+/* Comment wrapper — give absolute positioning a reference point */
 
 .comment-body,
 .comment-content,
@@ -23,7 +23,7 @@
 	padding-bottom: 2.25rem;
 }
 
-/* ─── Vote container ────────────────────────────────────────────────────── */
+/* Vote container */
 
 .scr-vote-container {
 	position: absolute;
@@ -39,7 +39,7 @@
 .scr-pos-top-right    { top:    0.4rem; right: 1.2rem; }
 .scr-pos-top-left     { top:    0.4rem; left:  1.2rem; }
 
-/* ─── Wrapper ────────────────────────────────────────────────────────────── */
+/* Wrapper */
 
 .scr-votes-wrapper {
 	display:     flex;
@@ -47,7 +47,7 @@
 	gap:         4px;
 }
 
-/* ─── Buttons ────────────────────────────────────────────────────────────── */
+/* Buttons */
 
 .scr-vote-btn {
 	display:         inline-flex;
@@ -102,7 +102,7 @@
 	opacity: 0.45;
 }
 
-/* ─── Active / voted state ───────────────────────────────────────────────── */
+/* Active / voted state */
 
 .scr-vote-btn.scr-active {
 	filter: none;
@@ -112,7 +112,7 @@
 	opacity: 1; /* keep voted thumb fully visible */
 }
 
-/* ─── Count labels ───────────────────────────────────────────────────────── */
+/* Count labels */
 
 .scr-count-up,
 .scr-count-down,
@@ -130,7 +130,7 @@
 	color:   #444;
 }
 
-/* ─── AJAX loading placeholder ───────────────────────────────────────────── */
+/* AJAX loading placeholder */
 
 .scr-ajax-counts .scr-count-up,
 .scr-ajax-counts .scr-count-down,
@@ -154,7 +154,7 @@
 	animation: none;
 }
 
-/* ─── Hover float animation (loops while cursor is over button) ──────────── */
+/* Hover float animation (loops while cursor is over button) */
 
 @keyframes scr-hover-float-up {
 	0%, 100% { transform: translateY(  0   ); }
@@ -166,7 +166,7 @@
 	50%      { transform: translateY( 4px ); }
 }
 
-/* ─── Click pop animation ────────────────────────────────────────────────── */
+/* Click pop animation */
 
 @keyframes scr-pop-up {
 	0%   { transform: scale( 1 )   translateY(    0 ); }
