@@ -11,7 +11,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SCR_VERSION',  '1.0.0' );
+define( 'SCR_VERSION',  '1.0.1' );
 define( 'SCR_PATH',     plugin_dir_path( __FILE__ ) );
 define( 'SCR_URL',      plugin_dir_url( __FILE__ ) );
 define( 'SCR_BASENAME', plugin_basename( __FILE__ ) );
