@@ -56,7 +56,13 @@ class SCR_Plugin {
 	// ---------------------------------------------------------------------------
 
 	public function enqueue_assets(): void {
-		if ( ! is_singular() || ! comments_open() ) {
+		if ( ! is_singular() ) {
+			return;
+		}
+
+		// Load assets only when there is something to vote on or a form to protect.
+		// get_comments_number() reads the cached comment_count column — no extra query.
+		if ( ! comments_open() && ! get_comments_number() ) {
 			return;
 		}
 
