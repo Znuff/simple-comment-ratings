@@ -34,7 +34,7 @@
 }
 
 /* Position variants */
-.scr-pos-bottom-right { bottom: 0rem; right: 0rem; }
+.scr-pos-bottom-right { /*bottom: 0rem;*/ right: 0rem; }
 .scr-pos-bottom-left  { bottom: 0rem; left:  0rem; }
 .scr-pos-top-right    { top:    0rem; right: 0rem; }
 .scr-pos-top-left     { top:    0rem; left:  0rem; }
@@ -62,7 +62,7 @@
 	text-decoration: none;
 	transition:      color 0.12s ease, opacity 0.12s ease;
 	user-select:     none;
-	text-shadow:     2px 2px 3px black;
+	text-shadow:     1px 1px 1px black;
 }
 
 /* Icon element - needs display:inline-block for transforms */
@@ -89,8 +89,8 @@
 }
 
 /* Hover - icon loops in the vote direction while cursor is over the button */
-.scr-vote-up:hover:not(:disabled)   i { animation: scr-hover-float-up   0.8s ease-in-out infinite; }
-.scr-vote-down:hover:not(:disabled) i { animation: scr-hover-float-down 0.8s ease-in-out infinite; }
+.scr-vote-up:hover:not(:disabled)   i { animation: scr-hover-float-up   0.6s ease-in-out infinite; }
+.scr-vote-down:hover:not(:disabled) i { animation: scr-hover-float-down 0.6s ease-in-out infinite; }
 
 .scr-vote-btn:focus-visible {
 	outline:        2px solid currentColor;

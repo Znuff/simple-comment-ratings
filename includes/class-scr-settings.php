@@ -58,8 +58,8 @@ class SCR_Settings {
 
 	public function add_menu(): void {
 		add_options_page(
-			__( 'Comment Ratings', 'simple-comment-ratings' ),
-			__( 'Comment Ratings', 'simple-comment-ratings' ),
+			__( 'Simple Comment Ratings', 'simple-comment-ratings' ),
+			__( '👍 Simple Comment Ratings', 'simple-comment-ratings' ),
 			'manage_options',
 			self::OPTION_PAGE,
 			[ $this, 'render_page' ]
