@@ -57,12 +57,12 @@
 	border:          none;
 	padding:         2px 4px;
 	cursor:          pointer;
-	font-size:       1.4rem;
+	font-size:       1.25rem;
 	line-height:     1.4;
 	text-decoration: none;
 	transition:      color 0.12s ease, opacity 0.12s ease;
 	user-select:     none;
-	text-shadow:     1px 1px 1px black;
+	text-shadow:     1px 1px 1px rgba(0,0,0,0.5);
 }
 
 /* Icon element - needs display:inline-block for transforms */
@@ -71,8 +71,8 @@
 	transition: transform 0.18s ease;
 }
 
-.scr-vote-up, .scr-vote-up:hover   { color: #4caf50; }
-.scr-vote-down, .scr-vote-down:hover { color: #f44336; }
+.scr-vote-up, .scr-vote-up:hover   { color: rgb(0, 153, 51); }
+.scr-vote-down, .scr-vote-down:hover { color: rgb(153, 0, 51); }
 
 /* Reset any theme-injected button hover decoration */
 .scr-vote-btn:hover,
@@ -118,8 +118,8 @@
 .scr-count-up,
 .scr-count-down,
 .scr-count-sum {
-	font-size:   1.6rem;
-	font-weight: 600;
+	font-size:   1.25rem;
+	font-weight: 400;
 	min-width:   1ch;
 	display:     inline-block;
 	text-align:  center;
@@ -128,7 +128,7 @@
 /* Net score between buttons (sum style) */
 .scr-count-sum {
 	padding: 0 2px;
-	color:   #444;
+	color:   rgb(255, 123, 0);
 }
 
 /* AJAX loading placeholder */
